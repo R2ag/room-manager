@@ -1,19 +1,32 @@
 package com.rlag.romapi.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Room {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
+
+    @Column
+    private String name;
+
+    @Column
+    private int number;
+
+    @Column
+    private String location;
+
+    @OneToMany(mappedBy = "room")
+    private List<Booking> bookings;
 }

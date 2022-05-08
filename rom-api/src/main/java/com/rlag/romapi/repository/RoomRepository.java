@@ -1,2 +1,7 @@
-package com.rlag.romapi.repository;public interface RoomRepository {
+package com.rlag.romapi.repository;
+
+import com.rlag.romapi.model.Room;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RoomRepository extends JpaRepository<Room, Long> {
 }
