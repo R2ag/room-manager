@@ -1,4 +1,4 @@
-package com.rlag.romapi.model;
+package com.rlag.romapi.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -13,20 +14,25 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Room {
+public class Event {
+
     @Id
     @GeneratedValue
     private Long id;
 
     @Column
-    private String name;
+    private String title;
 
     @Column
-    private int number;
+    private LocalDateTime startDateTime;
 
     @Column
-    private String location;
+    private LocalDateTime endDateTime;
 
-    @OneToMany(mappedBy = "room")
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person sponsor;
+
+    @OneToMany(mappedBy = "event")
     private List<Booking> bookings;
 }
