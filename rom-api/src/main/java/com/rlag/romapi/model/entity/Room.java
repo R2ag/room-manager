@@ -29,4 +29,10 @@ public class Room {
 
     @OneToMany(mappedBy = "room")
     private List<Booking> bookings;
+
+    public Room(String name, int number, String location){
+        this.name = name;
+        this.number = number;
+        this.location = location;
+    }
 }
