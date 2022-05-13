@@ -1,5 +1,6 @@
 package com.rlag.romapi.service;
 
+import com.rlag.romapi.mapper.RoomMapper;
 import com.rlag.romapi.model.DTO.request.RoomDTO;
 import com.rlag.romapi.model.entity.Room;
 import com.rlag.romapi.repository.RoomRepository;
@@ -17,10 +18,13 @@ import java.util.stream.Collectors;
 public class RoomService {
     @Autowired
     private RoomRepository roomRepository;
-    private RoomDTO roomDTO;
+
+    private final RoomMapper mapper = RoomMapper.INSTANCE;
+
+
 
     public Room createRoom(RoomDTO room) {
-        Room roomToSave = room.toObject();
+        Room roomToSave = mapper.toModel(room);
 
         Room savedRoom = roomRepository.save(roomToSave);
         return savedRoom;
@@ -29,7 +33,7 @@ public class RoomService {
     public List<RoomDTO> listAll() {
         List<Room> allRoom = roomRepository.findAll();
         return allRoom.stream()
-                .map(roomDTO::toDTO)
+                .map(mapper::toDTO)
                 .collect(Collectors.toList());
 
     }

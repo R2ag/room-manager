@@ -21,11 +21,4 @@ public class RoomDTO {
     @NotEmpty
     private String location;
 
-    public Room toObject(){
-        return new Room(name, number, location);
-    }
-
-    public RoomDTO toDTO(Room room){
-        return new RoomDTO(room.getName(), room.getNumber(), room.getLocation());
-    }
 }
