@@ -5,8 +5,7 @@ import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
 
-@Getter
-@Setter
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,5 +19,13 @@ public class RoomDTO {
 
     @NotEmpty
     private String location;
+
+    public RoomDTO toDTO(Room room){
+        return new RoomDTO(room.getName(), room.getNumber(), room.getLocation());
+    }
+
+    public Room toModel(RoomDTO roomDTO){
+        return new Room(roomDTO.getName(), roomDTO.getNumber(), roomDTO.getLocation());
+    }
 
 }
