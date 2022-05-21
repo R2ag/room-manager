@@ -1,6 +1,5 @@
 package com.rlag.romapi.controller;
 
-import com.rlag.romapi.model.DTO.request.RoomDTO;
 import com.rlag.romapi.model.entity.Room;
 import com.rlag.romapi.service.RoomService;
 import lombok.AllArgsConstructor;
@@ -11,10 +10,9 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/room")
-@AllArgsConstructor(onConstructor = @__(@Autowired))
+@RequestMapping("/room")
 public class RoomController {
-
+    @Autowired
     private RoomService roomService;
 
     @PostMapping

@@ -1,28 +1,24 @@
-package com.rlag.romapi.model.entity;
+package com.rlag.romapi.DTO.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
-@Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Room {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class RoomDTO {
 
-    @Column
+    @NotEmpty
     private String name;
 
-    @Column
+    @NotEmpty
     private int number;
 
-    @Column
+    @NotEmpty
     private String location;
 
 }
